@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: peerjs-server
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PEER_PORT
+        value: 10000
+      - key: HOST
+        fromService:
+          name: peerjs-server
+          type: web
+          property: host
